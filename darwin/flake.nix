@@ -18,8 +18,14 @@
       environment.systemPackages = [
         pkgs.vim
         pkgs.neovim
+        pkgs.opencode
 
         pkgs.rustup
+
+        # sr
+        pkgs.awscli2
+        pkgs.lens
+        pkgs.kubectl
 
         pkgs.iterm2
         pkgs.fish
@@ -28,6 +34,9 @@
         pkgs.zoxide
         pkgs.eza
         pkgs.lazygit
+        pkgs.tmux
+        pkgs.raycast
+        pkgs.rectangle
       ];
 
       fonts.packages = with pkgs; [
@@ -63,6 +72,12 @@
 
       # The platform the configuration will be used on.
       nixpkgs.hostPlatform = "aarch64-darwin";
+
+      nixpkgs.config.allowUnfreePredicate = pkg:
+        builtins.elem (pkgs.lib.getName pkg) [
+          "lens-desktop"
+          "raycast"
+        ];
     };
   in {
     # Build darwin flake using:
