@@ -19,24 +19,52 @@
         pkgs.vim
         pkgs.neovim
         pkgs.opencode
+        pkgs.codex
+        pkgs.claude-code
+        # pkgs.t3code
+        # pkgs.cursor-cli
+
+        pkgs.gh
+        pkgs.atlas
+        pkgs.libpq
+        pkgs.terraform
+        pkgs.go-task
+        pkgs.templ
+        pkgs.air
 
         pkgs.rustup
+        pkgs.go
+        pkgs.nodejs_26
+        pkgs.python313
+        pkgs.pnpm
+        # pkgs.beam28Packages.elixir_1_20
+        # pkgs.beam28Packages.erlang
+        pkgs.lua51Packages.tree-sitter-cli
+        pkgs.rubyPackages.cocoapods
+        # pkgs.postman
+
+        # pkgs.duckdb
+        # pkgs.btop
+        # pkgs.postgresql
 
         # sr
-        pkgs.awscli2
-        pkgs.lens
-        pkgs.kubectl
+        # pkgs.awscli2
+        # pkgs.lens
+        # pkgs.kubectl
+        pkgs.jetbrains.datagrip
 
         pkgs.iterm2
         pkgs.fish
         pkgs.starship
         pkgs.fzf
+        pkgs.ripgrep
         pkgs.zoxide
         pkgs.eza
         pkgs.lazygit
         pkgs.tmux
         pkgs.raycast
-        pkgs.rectangle
+        # pkgs.rectangle
+        pkgs.orbstack
       ];
 
       fonts.packages = with pkgs; [
@@ -77,6 +105,12 @@
         builtins.elem (pkgs.lib.getName pkg) [
           "lens-desktop"
           "raycast"
+          "datagrip"
+          "orbstack"
+          "claude-code"
+          "postman"
+          "cursor-cli"
+          "terraform"
         ];
     };
   in {
