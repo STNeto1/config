@@ -1,0 +1,10 @@
+{
+  "lastChangelogVersion": "0.80.10",
+  "theme": "light",
+  "packages": [
+    "npm:@ogulcancelik/pi-herdr"
+  ],
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-5.6-sol",
+  "defaultThinkingLevel": "medium"
+}
