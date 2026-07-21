@@ -1,0 +1,6 @@
+nvim
+
+herdr/
+!herdr/config.toml
+
+raycast

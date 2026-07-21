@@ -1,6 +1,9 @@
 font-family = BlexMono Nerd Font Mono
 font-size = 18
 
+# Ghostty runs Fish; shell behavior remains in ~/.config/fish.
+command = /run/current-system/sw/bin/fish --login
+
 theme = light:Rose Pine Dawn,dark:Rose Pine
 background-opacity = 1
 

@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# Create or recreate a tmux session named after the current directory.
+session_name=$(basename "$PWD")
+
+if tmux has-session -t "$session_name" 2>/dev/null; then
+    tmux kill-session -t "$session_name" || exit $?
+fi
+
+tmux new-session -d -s "$session_name" -c "$PWD" || exit $?
+
+if [ -n "${TMUX:-}" ]; then
+    exec tmux switch-client -t "$session_name"
+else
+    exec tmux attach-session -t "$session_name"
+fi
