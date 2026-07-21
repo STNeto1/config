@@ -1,0 +1,22 @@
+onboarding = false
+
+[theme]
+name = "rose-pine"
+
+[terminal]
+shell_mode = "auto"
+new_cwd = "follow"
+
+[keys]
+split_vertical = ["prefix+v", "prefix+|"]
+split_hortizoontal = "prefix+minus"
+
+[ui]
+show_agent_labels_on_pane_borders = true
+
+[ui.toast]
+delivery = "system"
+delay_seconds = 1
+
+[ui.sound]
+enabled = true

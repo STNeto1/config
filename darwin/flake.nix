@@ -21,6 +21,7 @@
         pkgs.opencode
         pkgs.codex
         pkgs.claude-code
+        pkgs.pi-coding-agent
         # pkgs.t3code
         # pkgs.cursor-cli
 
@@ -62,6 +63,7 @@
         pkgs.eza
         pkgs.lazygit
         pkgs.tmux
+        pkgs.herdr
         pkgs.raycast
         # pkgs.rectangle
         pkgs.orbstack
