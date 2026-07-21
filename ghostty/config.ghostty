@@ -1,0 +1,18 @@
+font-family = BlexMono Nerd Font Mono
+font-size = 18
+
+theme = light:Rose Pine Dawn,dark:Rose Pine
+background-opacity = 1
+
+window-padding-x = 10
+window-padding-y = 8
+window-padding-balance = true
+window-save-state = never
+
+macos-titlebar-style = transparent
+macos-option-as-alt = true
+
+mouse-hide-while-typing = true
+copy-on-select = clipboard
+clipboard-read = ask
+clipboard-write = allow

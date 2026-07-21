@@ -55,6 +55,7 @@
         pkgs.jetbrains.datagrip
 
         pkgs.iterm2
+        pkgs.ghostty-bin
         pkgs.fish
         pkgs.starship
         pkgs.fzf
