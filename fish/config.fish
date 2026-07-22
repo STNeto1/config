@@ -1,3 +1,9 @@
+# Nix packages live in an immutable store, so global JavaScript packages must
+# use user-writable locations instead of /run/current-system/sw.
+set -gx PNPM_HOME "$HOME/Library/pnpm"
+set -gx NPM_CONFIG_PREFIX "$HOME/.local"
+fish_add_path --global --move "$PNPM_HOME/bin" "$NPM_CONFIG_PREFIX/bin"
+
 if status is-interactive
 
     function nix-update-all

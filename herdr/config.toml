@@ -4,12 +4,15 @@ onboarding = false
 name = "rose-pine"
 
 [terminal]
-shell_mode = "auto"
+default_shell = "/run/current-system/sw/bin/fish"
+shell_mode = "login"
 new_cwd = "follow"
 
 [keys]
 split_vertical = ["prefix+v", "prefix+|"]
 split_hortizoontal = "prefix+minus"
+previous_workspace = "prefix+["
+next_workspace = "prefix+]"
 
 [ui]
 show_agent_labels_on_pane_borders = true
