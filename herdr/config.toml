@@ -1,7 +1,10 @@
 onboarding = false
 
 [theme]
-name = "rose-pine"
+name = "catppuccin"
+auto_switch = true
+light_name = "catppuccin-latte"
+dark_name = "catppuccin"
 
 [terminal]
 default_shell = "/run/current-system/sw/bin/fish"
