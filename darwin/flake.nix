@@ -77,6 +77,7 @@
         pkgs.orbstack
         # pkgs.ngrok
         pkgs.obsidian
+        pkgs.slack
       ];
 
       fonts.packages = with pkgs; [
@@ -126,6 +127,7 @@
           # "ngrok"
           "tailscale"
           "obsidian"
+          "slack"
         ];
     };
   in {
