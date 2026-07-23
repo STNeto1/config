@@ -13,12 +13,17 @@
     nixpkgs,
   }: let
     configuration = {pkgs, ...}: {
+      services.tailscale = {
+        enable = true;
+        package = pkgs.tailscale;
+      };
+
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
       environment.systemPackages = [
         pkgs.vim
         pkgs.neovim
-        pkgs.opencode
+        # pkgs.opencode
         pkgs.codex
         pkgs.claude-code
         pkgs.pi-coding-agent
@@ -29,15 +34,16 @@
         pkgs.atlas
         pkgs.libpq
         pkgs.terraform
-        pkgs.go-task
-        pkgs.templ
-        pkgs.air
+        # pkgs.go-task
+        # pkgs.templ
+        # pkgs.air
 
         pkgs.rustup
         pkgs.go
         pkgs.nodejs_26
         pkgs.python313
         pkgs.pnpm
+        pkgs.bun
         # pkgs.beam28Packages.elixir_1_20
         # pkgs.beam28Packages.erlang
         pkgs.lua51Packages.tree-sitter-cli
@@ -49,12 +55,13 @@
         # pkgs.postgresql
 
         # sr
-        # pkgs.awscli2
-        # pkgs.lens
-        # pkgs.kubectl
+        pkgs.awscli2
+        pkgs.lens
+        pkgs.kubectl
         pkgs.jetbrains.datagrip
+        pkgs.tailscale
 
-        pkgs.iterm2
+        # pkgs.iterm2
         pkgs.ghostty-bin
         pkgs.fish
         pkgs.starship
@@ -68,6 +75,8 @@
         pkgs.raycast
         # pkgs.rectangle
         pkgs.orbstack
+        # pkgs.ngrok
+        pkgs.obsidian
       ];
 
       fonts.packages = with pkgs; [
@@ -114,6 +123,9 @@
           "postman"
           "cursor-cli"
           "terraform"
+          # "ngrok"
+          "tailscale"
+          "obsidian"
         ];
     };
   in {

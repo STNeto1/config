@@ -4,9 +4,13 @@ herdr/
 !herdr/config.toml
 
 raycast
+gh
+stripe
+tanstack
 
 # Pi runtime state and credentials (keep configuration/skills tracked)
 pi/agent/auth.json
 pi/agent/models-store.json
 pi/agent/npm/
 pi/agent/sessions/
+pi/context-mode/
