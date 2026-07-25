@@ -13,7 +13,7 @@ new_cwd = "follow"
 
 [keys]
 split_vertical = ["prefix+v", "prefix+|"]
-split_hortizoontal = "prefix+minus"
+split_horizontal = "prefix+minus"
 previous_workspace = "prefix+["
 next_workspace = "prefix+]"
 
