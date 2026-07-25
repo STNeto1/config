@@ -6,10 +6,14 @@ fish_add_path --global --move "$PNPM_HOME/bin" "$NPM_CONFIG_PREFIX/bin"
 
 if status is-interactive
 
+    # function nix-update-all
+    #   sudo darwin-rebuild switch --flake ~/.config/darwin/#simple
+    #   sudo nix flake update --flake  ~/.config/darwin
+    # end
     function nix-update-all
-      sudo darwin-rebuild switch --flake ~/.config/darwin/#simple
-      sudo nix flake update --flake  ~/.config/darwin
-    end
+       nix flake update --flake "$HOME/.config/darwin"
+       and sudo darwin-rebuild switch --flake "$HOME/.config/darwin#simple"
+   end
 
     function ls
         eza --icons --group-directories-first $argv
