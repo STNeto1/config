@@ -18,6 +18,9 @@ darwin-rebuild switch --flake .#simple
 ## NixOS
 
 The default NixOS output is named `nixos` and targets `x86_64-linux`.
+See [`hosts/nixos/README.md`](hosts/nixos/README.md) for the linuxbox bootstrap,
+deployment, pull-only GitHub synchronization, Pi, Herdr, and recovery runbook.
+
 Before using it on a machine, copy that machine's generated hardware configuration:
 
 ```sh
