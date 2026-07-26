@@ -9,6 +9,7 @@
     # t3code
     # cursor-cli
 
+    git
     gh
     atlas
     # libpq
