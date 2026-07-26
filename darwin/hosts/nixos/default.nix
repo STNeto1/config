@@ -30,6 +30,9 @@
 
   networking.firewall.interfaces."tailscale0".allowedTCPPorts = [22];
 
+  # Allow declarative rebuilds over SSH without provisioning a user password.
+  security.sudo.wheelNeedsPassword = false;
+
   users.users.germano = {
     isNormalUser = true;
     description = "Germano";
