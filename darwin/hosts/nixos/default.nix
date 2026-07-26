@@ -10,8 +10,14 @@
     ]
     ++ lib.optional (builtins.pathExists ./hardware-configuration.nix) ./hardware-configuration.nix;
 
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
+
+  # Support terminal types forwarded by modern clients such as Ghostty.
+  environment.enableAllTerminfo = true;
 
   services.tailscale = {
     enable = true;
@@ -47,5 +53,5 @@
   };
 
   # Set this to the NixOS release used for the first installation.
-  system.stateVersion = "25.11";
+  system.stateVersion = "26.05";
 }
