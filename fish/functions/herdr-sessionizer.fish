@@ -5,6 +5,27 @@ function __herdr_sessionizer_ssh
     command ssh -o BatchMode=yes -o ConnectTimeout=8 "$target" "$remote_command"
 end
 
+function __herdr_sessionizer_ensure_local
+    set -l server_status (herdr status server 2>&1 | string collect)
+    if string match -q '*status: running*' -- "$server_status"
+        return 0
+    end
+
+    command nohup herdr server >/tmp/herdr-sessionizer.log 2>&1 </dev/null &
+    disown
+
+    for _attempt in (seq 1 50)
+        sleep 0.1
+        set server_status (herdr status server 2>&1 | string collect)
+        if string match -q '*status: running*' -- "$server_status"
+            return 0
+        end
+    end
+
+    echo "Herdr server did not start. See /tmp/herdr-sessionizer.log." >&2
+    return 1
+end
+
 function __herdr_sessionizer_ensure_remote -a target session
     if not __herdr_sessionizer_ssh "$target" true >/dev/null 2>&1
         echo "Unable to reach $target over SSH." >&2
@@ -66,22 +87,30 @@ function herdr-sessionizer -d "Select a local or remote project and focus/create
             return
         end
 
+        __herdr_sessionizer_ensure_local
+        or return 1
+
         set -l real_path (realpath "$selected")
         set -l label (basename "$real_path" | string replace -ar '[^A-Za-z0-9_-]' '_' | string sub -l 64)
-        set -l existing_id (herdr workspace list \
+        set -l workspace_json (herdr workspace list)
+        or return 1
+        set -l existing_id (string join '' $workspace_json \
             | jq -r --arg path "$real_path" '.result.workspaces[]? | select(.tokens.path == $path) | .workspace_id' \
             | head -n1)
 
         if test -n "$existing_id"
             herdr workspace focus "$existing_id"
+            or return 1
         else
             set -l created (herdr workspace create --cwd "$real_path" --label "$label" --focus)
+            or return 1
             set -l new_id (string join '' $created | jq -r '.result.workspace.workspace_id // empty')
             if test -z "$new_id"
                 echo "Failed to create a Herdr workspace for $real_path." >&2
                 return 1
             end
             herdr workspace report-metadata "$new_id" --source herdr-sessionizer --token path="$real_path"
+            or return 1
         end
 
         command herdr
