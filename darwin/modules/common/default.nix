@@ -64,7 +64,7 @@
       "postman"
       "cursor-cli"
       "terraform"
-      # "ngrok"
+      "ngrok"
       "tailscale"
       "obsidian"
       "slack"

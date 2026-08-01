@@ -19,7 +19,7 @@
     orbstack
     # iterm2
     # rectangle
-    # ngrok
+    ngrok
   ];
 
   fonts.packages = with pkgs; [
